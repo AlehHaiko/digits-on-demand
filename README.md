@@ -73,3 +73,11 @@ python mnist_conditional_diffusion.py --dataset digits --img-size 16 --timesteps
 - MNIST is a toy domain by design ("think small"): the point is the full pipeline, not state of the art.
 - Legibility of the generated digits is judged visually on the committed sample grid; no automated classifier-based metric was run. A held-out MNIST classifier as a judge is an easy next measurement.
 - Next step: swap the U-Net denoiser for a small transformer (the DiT move) and compare at equal parameter count.
+
+## Presentation
+
+Talk materials live in [`presentation/`](presentation/):
+
+- `Digits_on_Demand_narrated.pptx` — the slide deck; every slide carries the spoken script in a "What I would say" panel
+- `colab_talk_en.md` — the full talk script with demo steps and Q&A answers
+- `demo_recording.mp4` — a 2:12 screen recording of the live demo: the requested digit typed into the command, ten samples generated (CPU), then guidance 0 vs 4
