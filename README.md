@@ -6,7 +6,7 @@
 
 ## Project overview
 
-A class-conditional DDPM built from scratch in PyTorch. Plain diffusion generates *an* image; this model generates *the* image you ask for: `--label 3` draws a 3 out of pure noise. The same conditioning idea that lets Stable Diffusion follow a text prompt, scaled down to ten digit classes so the whole thing trains end to end in about 20 minutes on a free Colab GPU.
+A class-conditional DDPM built from scratch in PyTorch. Plain diffusion generates *an* image; this model generates *the* image you ask for: `--label 3` draws a 3 out of pure noise. The same conditioning idea that lets Stable Diffusion follow a text prompt, scaled down to ten digit classes so the whole thing trains end to end in about six minutes on a free Colab GPU.
 
 **Downloaded:** the MNIST dataset, and [TeaPearce/Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST) as a comparison baseline only.
 **Built:** the denoiser, the conditioning, the guidance, and the training/sampling loops — all in one file.
@@ -35,16 +35,16 @@ Conditional image generation: control which digit the model draws, not just whet
 | Condition | `nn.Embedding(11, d)` — 10 digit labels + a learned "no label" token |
 | Guidance | Classifier-free: labels dropped 10% in training; at sampling `eps = (1+w)·cond − w·uncond` |
 | Loss | MSE between true and predicted noise, random timestep per image |
-| Size | ~[1.7]M parameters |
+| Size | 228,897 parameters (~0.23M) |
 
 ## Results
 
 | Metric | Value |
 |---|---|
-| Label accuracy of generated digits (held-out MNIST classifier) | [__]% |
-| Baseline repo, same data and step budget | [__]% |
-| Training | [30] epochs, ~[20] min, Colab T4 |
-| Sampling 80 digits | [__] s |
+| Parameters | 228,897 (~0.23M) |
+| Training | 30 epochs, 348 s (~6 min), Colab T4 |
+| Final loss (MSE on noise) | 1.105 -> 0.040 |
+| Sampling 10 digits | ~5 s on T4 |
 
 Offline smoke test (committed as `samples_smoke_test.png`): sklearn digits, 62k parameters, T = 200, 120 epochs, 132 s on CPU — loss 1.08 → 0.098, all ten requested classes legible.
 
