@@ -9,7 +9,7 @@
 A class-conditional DDPM built from scratch in PyTorch. Plain diffusion generates *an* image; this model generates *the* image you ask for: `--label 3` draws a 3 out of pure noise. The same conditioning idea that lets Stable Diffusion follow a text prompt, scaled down to ten digit classes so the whole thing trains end to end in about six minutes on a free Colab GPU.
 
 **Downloaded:** the MNIST dataset, and [TeaPearce/Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST) as a comparison baseline only.
-**Built:** the denoiser, the conditioning, the guidance, and the training/sampling loops — all in one file.
+**Built:** the denoiser, the conditioning, the guidance, and the training/sampling loops — all in one file. The code is AI-assisted (Claude) — read, verified, and edited by me; every design decision and every reported number is mine to defend.
 
 ## Repository contents
 
