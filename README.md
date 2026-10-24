@@ -54,7 +54,7 @@ Offline smoke test (committed as `samples_smoke_test.png`): sklearn digits, 62k 
 
 ```bash
 pip install -r requirements.txt
-# train (~20 min on T4), saves cond_diffusion.pt:
+# train (~6 min on T4), saves cond_diffusion.pt:
 python mnist_conditional_diffusion.py --dataset mnist --epochs 30
 # then sample any digit:
 python mnist_conditional_diffusion.py --sample-only --label 3 --out demo.png
@@ -71,5 +71,5 @@ python mnist_conditional_diffusion.py --dataset digits --img-size 16 --timesteps
 ## Notes and limitations
 
 - MNIST is a toy domain by design ("think small"): the point is the full pipeline, not state of the art.
-- The demo digits are judged by a separate classifier, not by eye; the live demo sample is not a measure of overall accuracy.
+- Legibility of the generated digits is judged visually on the committed sample grid; no automated classifier-based metric was run. A held-out MNIST classifier as a judge is an easy next measurement.
 - Next step: swap the U-Net denoiser for a small transformer (the DiT move) and compare at equal parameter count.
